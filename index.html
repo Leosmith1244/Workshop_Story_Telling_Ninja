@@ -235,35 +235,315 @@
                 
                 <div class="register-form">
     <h3>Register Now</h3>
-    <form name="workshop-registration" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-		 <!-- Netlify's honeypot field for spam filtering -->
-		action="/thank-you.html">  <!-- NETLIFY REDIRECT -->
+    <form name="workshop-registration" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+        <!-- Floating decoration elements -->
+        <div class="form-decoration form-star"><i class="fas fa-star"></i></div>
+        <div class="form-decoration form-mic"><i class="fas fa-microphone"></i></div>
+        
+        <!-- Honeypot Field -->
         <div class="hidden">
             <label>Don't fill this out if you're human: <input name="bot-field"></label>
         </div>
         
-        <div class="form-group">
-            <input type="text" name="full-name" placeholder="Full Name" required>
+        <!-- Main Form Fields -->
+        <div class="form-group floating-input">
+            <input type="text" name="full-name" id="full-name" placeholder=" " required>
+            <label for="full-name">Full Name</label>
+            <div class="input-icon"><i class="fas fa-user"></i></div>
         </div>
-        <div class="form-group">
-            <input type="email" name="email" placeholder="Email Address" required>
+        
+        <div class="form-group floating-input">
+            <input type="email" name="email" id="email" placeholder=" " required>
+            <label for="email">Email Address</label>
+            <div class="input-icon"><i class="fas fa-envelope"></i></div>
         </div>
-        <div class="form-group">
-            <select name="membership-status" required>
-                <option value="" disabled selected>Are you a PR Pros member?</option>
+        
+        <div class="form-group floating-select">
+            <select name="membership-status" id="membership-status" required>
+                <option value="" disabled selected></option>
                 <option value="member">Yes, I'm a PR Pros member</option>
                 <option value="guest">No, I'm a guest</option>
             </select>
+            <label for="membership-status">Are you a PR Pros member?</label>
+            <div class="select-arrow"><i class="fas fa-chevron-down"></i></div>
         </div>
+        
+        <!-- Cool Textarea Section -->
         <div class="form-group">
-            <label>
-                <input type="checkbox" name="communication-consent" required>
+            <label for="additional-info" class="textarea-label">
+                <i class="fas fa-comment-dots"></i> Anything else we should know?
+                <span class="optional-tag">(optional)</span>
+            </label>
+            <textarea name="additional-info" id="additional-info" placeholder="Special requests, accessibility needs, or what you hope to learn..."></textarea>
+            <div class="character-count"><span id="char-count">0</span>/200</div>
+        </div>
+        
+        <div class="form-group checkbox-cool">
+            <input type="checkbox" name="communication-consent" id="communication-consent" required>
+            <label for="communication-consent">
+                <span class="custom-checkbox"></span>
                 I agree to receive communications about this workshop
             </label>
         </div>
+        
         <input type="hidden" name="form-name" value="workshop-registration">
-        <button type="submit" class="btn">Register for Workshop</button>
+        
+        <button type="submit" class="btn btn-submit">
+            <span class="btn-text">Secure My Spot</span>
+            <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+        </button>
+        
+        <div class="form-footer">
+            <i class="fas fa-lock"></i> Your information is protected and will only be used for this event.
+        </div>
     </form>
+</div>
+
+<style>
+/* ===== FORM ENHANCEMENTS ===== */
+.register-form {
+    position: relative;
+    overflow: hidden;
+}
+
+.form-decoration {
+    position: absolute;
+    opacity: 0.1;
+    font-size: 3rem;
+    color: var(--yellow);
+    z-index: 0;
+}
+
+.form-star {
+    top: -1rem;
+    right: -1rem;
+    transform: rotate(20deg);
+}
+
+.form-mic {
+    bottom: 2rem;
+    left: -1rem;
+    font-size: 4rem;
+}
+
+.floating-input, .floating-select {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.floating-input input, 
+.floating-select select {
+    width: 100%;
+    padding: 1.5rem 1rem 0.5rem 3rem;
+    border: 2px solid var(--gray);
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.floating-select select {
+    appearance: none;
+    padding-right: 2.5rem;
+}
+
+.floating-input label, 
+.floating-select label {
+    position: absolute;
+    top: 0.8rem;
+    left: 3rem;
+    font-size: 0.8rem;
+    color: var(--blue);
+    transition: all 0.3s;
+    z-index: 1;
+}
+
+.floating-input input:focus,
+.floating-select select:focus {
+    outline: none;
+    border-color: var(--yellow);
+    box-shadow: 0 0 0 3px rgba(242, 223, 116, 0.3);
+}
+
+.floating-input input:focus + label,
+.floating-input input:not(:placeholder-shown) + label,
+.floating-select select:focus + label,
+.floating-select select:not([value=""]) + label {
+    top: 0.3rem;
+    font-size: 0.7rem;
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--blue);
+    z-index: 1;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--blue);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Textarea Styles */
+.textarea-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--blue);
+    font-weight: 600;
+}
+
+.textarea-label i {
+    color: var(--yellow);
+}
+
+.optional-tag {
+    font-size: 0.7rem;
+    color: var(--gray);
+    font-weight: normal;
+}
+
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 1rem;
+    border: 2px solid var(--gray);
+    border-radius: 8px;
+    font-family: 'Open Sans', sans-serif;
+    resize: vertical;
+    transition: all 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--yellow);
+    box-shadow: 0 0 0 3px rgba(242, 223, 116, 0.3);
+}
+
+.character-count {
+    text-align: right;
+    font-size: 0.8rem;
+    color: var(--gray);
+    margin-top: 0.3rem;
+}
+
+/* Enhanced Checkbox */
+.checkbox-cool {
+    margin: 2rem 0;
+}
+
+.checkbox-cool input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+}
+
+.checkbox-cool label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+}
+
+.custom-checkbox {
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 2px solid var(--blue);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.custom-checkbox::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.8rem;
+    color: white;
+    display: none;
+}
+
+.checkbox-cool input[type="checkbox"]:checked + label .custom-checkbox {
+    background: var(--blue);
+    border-color: var(--blue);
+}
+
+.checkbox-cool input[type="checkbox"]:checked + label .custom-checkbox::after {
+    display: block;
+}
+
+/* Submit Button */
+.btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1rem 2rem;
+    background: var(--blue);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+.btn-submit:hover {
+    background: var(--maroon);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.btn-icon {
+    transition: transform 0.3s;
+}
+
+.btn-submit:hover .btn-icon {
+    transform: translateX(3px);
+}
+
+/* Form Footer */
+.form-footer {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--gray);
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.form-footer i {
+    color: var(--yellow);
+}
+</style>
+
+<script>
+// Character counter for textarea
+document.getElementById('additional-info').addEventListener('input', function() {
+    const count = this.value.length;
+    document.getElementById('char-count').textContent = count;
+    if (count > 180) {
+        document.getElementById('char-count').style.color = 'var(--maroon)';
+    } else {
+        document.getElementById('char-count').style.color = 'var(--gray)';
+    }
+});
+</script>
 </div>
                 </div>
             </div>
