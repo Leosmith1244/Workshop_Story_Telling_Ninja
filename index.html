@@ -11,20 +11,17 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-     <!-- Navigation -->
+    <!-- Navigation -->
     <nav>
         <div class="nav-container">
             <a href="#" class="logo">PR Pros Toastmasters</a>
             <div class="nav-links">
-			
-				<a href="index.html">Home</a>
-                <a href="index.html#about">About</a>
-                <a href="index.html#agenda">Agenda</a>
-                <a href="index.html#speeches">Speeches</a>
-                <a href="index.html#register" class="btn btn-nav">Register Now</a>
-				<a href="Speakers.html">Speakers</a>
-				<a href="monroe.html">Monroe Motivated Sequence</a>
-			</div>
+                <a href="#about">About</a>
+                <a href="#agenda">Agenda</a>
+                <a href="#speeches">Speeches</a>
+                <a href="#register" class="btn btn-nav">Register Now</a>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero Section -->
@@ -222,7 +219,7 @@
                         <li><strong>Date:</strong> September 18th, 2025</li>
                         <li><strong>Time:</strong> 7:00 PM - 8:30 PM Central Time</li>
                         <li><strong>Location:</strong> Online via Zoom</li>
-                        <li><strong>Cost:</strong> Free for PR Pros members, Free for guests</li>
+                        <li><strong>Cost:</strong> Free for PR Pros members, $10 for guests</li>
                     </ul>
                     
                     <div class="requirements">
@@ -234,37 +231,29 @@
                 </div>
                 
                 <div class="register-form">
-    <h3>Register Now</h3>
-    <form name="workshop-registration" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-		 <!-- Netlify's honeypot field for spam filtering -->
-		action="/thank-you.html">  <!-- NETLIFY REDIRECT -->
-        <div class="hidden">
-            <label>Don't fill this out if you're human: <input name="bot-field"></label>
-        </div>
-        
-        <div class="form-group">
-            <input type="text" name="full-name" placeholder="Full Name" required>
-        </div>
-        <div class="form-group">
-            <input type="email" name="email" placeholder="Email Address" required>
-        </div>
-        <div class="form-group">
-            <select name="membership-status" required>
-                <option value="" disabled selected>Are you a PR Pros member?</option>
-                <option value="member">Yes, I'm a PR Pros member</option>
-                <option value="guest">No, I'm a guest</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label>
-                <input type="checkbox" name="communication-consent" required>
-                I agree to receive communications about this workshop
-            </label>
-        </div>
-        <input type="hidden" name="form-name" value="workshop-registration">
-        <button type="submit" class="btn">Register for Workshop</button>
-    </form>
-</div>
+                    <h3>Register Now</h3>
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <select name="membership" required>
+                                <option value="" disabled selected>Are you a PR Pros member?</option>
+                                <option value="member">Yes, I'm a PR Pros member</option>
+                                <option value="guest">No, I'm a guest</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" name="consent" required>
+                                I agree to receive communications about this workshop
+                            </label>
+                        </div>
+                        <button type="submit" class="btn">Register for Workshop</button>
+                    </form>
                 </div>
             </div>
         </div>
